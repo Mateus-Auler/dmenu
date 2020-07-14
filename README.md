@@ -4,5 +4,6 @@
 
 - Center
 - Grid
+- Instant
 - Line Height
 - Xyz
