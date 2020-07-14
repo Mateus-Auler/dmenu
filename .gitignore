@@ -1,0 +1,11 @@
+*.o
+*.tar.gz
+dmenu
+config.h
+stest
+
+bare/
+patches/
+
+*.rej
+*.orig
