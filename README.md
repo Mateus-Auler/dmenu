@@ -2,6 +2,7 @@
 
 ### Currently applied patches
 
+- Border
 - Center
 - Grid
 - Instant
