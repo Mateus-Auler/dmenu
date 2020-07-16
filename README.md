@@ -6,5 +6,4 @@
 - Grid
 - Instant
 - Line Height
-- Prefix completion
 - Xyz
