@@ -6,4 +6,5 @@
 - Grid
 - Instant
 - Line Height
+- Xresources
 - Xyz
