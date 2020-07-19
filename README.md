@@ -7,5 +7,6 @@
 - Grid
 - Instant
 - Line Height
+- Prefix Completion Flag
 - Xresources
 - Xyz
