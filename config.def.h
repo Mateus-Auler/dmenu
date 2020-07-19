@@ -28,7 +28,7 @@ static unsigned int columns    = 0;
 static const char worddelimiters[] = " ";
 
 /* Size of the window border */
-static unsigned int border_width = 0;
+static unsigned int border_width = 1;
 
 /*
  * Use prefix matching by default; can be inverted with the -u flag.
