@@ -10,3 +10,7 @@
 - Prefix Completion Flag
 - Xresources
 - Xyz
+
+### Extra scripts
+
+- dmenu_run_history
