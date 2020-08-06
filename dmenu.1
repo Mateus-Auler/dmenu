@@ -24,6 +24,8 @@ dmenu \- dynamic menu
 .IR color ]
 .RB [ \-w
 .IR windowid ]
+.RB [ \-s
+.IR number ]
 .P
 .BR dmenu_run " ..."
 .SH DESCRIPTION
@@ -55,7 +57,7 @@ dmenu matches menu items case insensitively.
 .BI \-g " columns"
 dmenu lists items in a grid with the given number of columns.
 .TP
-.B \-n
+.B \-s
 dmenu instantly selects if only one match.
 .TP
 .BI \-l " lines"
@@ -115,6 +117,9 @@ Invert prefix matching setting.
 .TP
 .BI \-w " windowid"
 embed into windowid.
+.TP
+.BI \-n " number"
+preseslected item starting from 0.
 .SH USAGE
 dmenu is completely controlled by the keyboard.  Items are selected using the
 arrow keys, page up, page down, home, and end.

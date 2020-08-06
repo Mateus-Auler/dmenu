@@ -34,3 +34,7 @@ static unsigned int border_width = 1;
  * Use prefix matching by default; can be inverted with the -u flag.
  */
 static int use_prefix = 0;
+
+
+/* -s option; preselected item starting from 0 */
+static unsigned int preselected = 0;

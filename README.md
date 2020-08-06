@@ -8,6 +8,7 @@
 - Instant
 - Line Height
 - Prefix Completion Flag
+- Presel
 - Xresources
 - Xyz
 
