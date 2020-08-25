@@ -63,8 +63,9 @@ static char *tempfonts;
 
 #include "config.h"
 
-static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
-static char *(*fstrstr)(const char *, const char *) = strstr;
+static char * cistrstr(const char *s, const char *sub);
+static int (*fstrncmp)(const char *, const char *, size_t) = strncasecmp;
+static char *(*fstrstr)(const char *, const char *) = cistrstr;
 
 static void
 appenditem(struct item *item, struct item **list, struct item **last)
@@ -766,7 +767,7 @@ usage(void)
 {
 	fputs("usage: dmenu [-bfinvx] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
 	      "             [-h height] [-x xoffset] [-y yoffset] [-wd width]\n"
-	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid] [-s number]\n", stderr);
+	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid] [-ps number]\n", stderr);
 	exit(1);
 }
 
@@ -792,11 +793,11 @@ readxresources(void) {
 			colors[SchemeNorm][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeNorm][ColFg] = strdup(colors[SchemeNorm][ColFg]);
-		if (XrmGetResource(xdb, "dmenu.color4", "*", &type, &xval))
+		if (XrmGetResource(xdb, "dmenu.foreground", "*", &type, &xval))
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
 		else
 			colors[SchemeSel][ColBg] = strdup(colors[SchemeSel][ColBg]);
-		if (XrmGetResource(xdb, "dmenu.color0", "*", &type, &xval))
+		if (XrmGetResource(xdb, "dmenu.background", "*", &type, &xval))
 			colors[SchemeSel][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeSel][ColFg] = strdup(colors[SchemeSel][ColFg]);
@@ -822,9 +823,9 @@ main(int argc, char *argv[])
 			fast = 1;
 		else if (!strcmp(argv[i], "-c"))   /* centers dmenu on screen */
 			centered = 1;
-		else if (!strcmp(argv[i], "-i")) { /* case-insensitive item matching */
-			fstrncmp = strncasecmp;
-			fstrstr = cistrstr;
+		else if (!strcmp(argv[i], "-s")) { /* case-sensitive item matching */
+			fstrncmp = strncmp;
+			fstrstr = strstr;
 		} else if (!strcmp(argv[i], "-u"))   /* invert use_prefix */
 			use_prefix = !use_prefix;
 		else if (!strcmp(argv[i], "-n")) /* instant select only match */
@@ -864,7 +865,7 @@ main(int argc, char *argv[])
 			colortemp[3] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
-		else if (!strcmp(argv[i], "-s"))   /* preselected item */
+		else if (!strcmp(argv[i], "-ps"))   /* preselected item */
 			preselected = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-bw"))
 			border_width = atoi(argv[++i]); /* border width */

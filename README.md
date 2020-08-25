@@ -3,6 +3,7 @@
 ### Currently applied patches
 
 - Border
+- Case Insensitive
 - Center
 - Grid
 - Instant
